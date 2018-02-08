@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Forms.Android", "Poker.Forms\Poker.Forms.Android\Poker.Forms.Android.csproj", "{AE85AC59-461D-4660-876A-E9BBB378E78E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Forms", "Poker.Forms\Poker.Forms\Poker.Forms.csproj", "{8FEEDC1C-7DD8-4596-AF86-0BA1D8293B51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE85AC59-461D-4660-876A-E9BBB378E78E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE85AC59-461D-4660-876A-E9BBB378E78E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE85AC59-461D-4660-876A-E9BBB378E78E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AE85AC59-461D-4660-876A-E9BBB378E78E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE85AC59-461D-4660-876A-E9BBB378E78E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE85AC59-461D-4660-876A-E9BBB378E78E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8FEEDC1C-7DD8-4596-AF86-0BA1D8293B51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FEEDC1C-7DD8-4596-AF86-0BA1D8293B51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FEEDC1C-7DD8-4596-AF86-0BA1D8293B51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FEEDC1C-7DD8-4596-AF86-0BA1D8293B51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73D9904B-9A16-45D2-9BED-5D5CC44B55BF}
+	EndGlobalSection
+EndGlobal
