@@ -3,9 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Poker.Forms"
              x:Class="Poker.Forms.MainPage">
-
-	<Label Text="Welcome to Xamarin.Forms!" 
+    <Label Text="Welcome to Xamarin.Forms!" 
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
-
+    <StackLayout>
+        <Label x:Name="Save" TextColor="Black"/>
+        <Button Command="{Binding AddReminderCommand}" Text="Add Reminder" WidthRequest="200" HeightRequest="50"/>
+        <ListView x:Name="RemindersList" ItemsSource="{Binding Reminders}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding ID}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>
