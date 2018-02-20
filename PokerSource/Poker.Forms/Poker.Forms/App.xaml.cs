@@ -1,4 +1,5 @@
-﻿#if !DEBUG
+﻿using Xamarin.Forms;
+#if !DEBUG
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
@@ -6,13 +7,17 @@ using Microsoft.AppCenter.Crashes;
 
 namespace Poker.Forms
 {
-    public partial class App
+    public partial class App : Application
     {
+        public ReminderManager Reminders { get; }
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            Reminders = new ReminderManager();
+
+            MainPage = new MainPage(Reminders);
         }
 
         protected override void OnStart()

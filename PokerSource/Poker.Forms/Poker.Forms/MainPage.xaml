@@ -7,12 +7,11 @@
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
     <StackLayout>
-        <Label x:Name="Save" TextColor="Black"/>
         <Button Command="{Binding AddReminderCommand}" Text="Add Reminder" WidthRequest="200" HeightRequest="50"/>
         <ListView x:Name="RemindersList" ItemsSource="{Binding Reminders}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding ID}" />
+                    <TextCell Text="{Binding Name}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
