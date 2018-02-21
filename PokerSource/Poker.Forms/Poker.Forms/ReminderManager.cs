@@ -1,8 +1,9 @@
-﻿using Poker.Forms.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using PCLStorage;
+using Poker.Forms.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Poker.Forms
 {
@@ -13,6 +14,8 @@ namespace Poker.Forms
         private readonly List<Reminder> reminders = new List<Reminder>();
 
         public IReadOnlyCollection<Reminder> Reminders => reminders;
+
+        public Reminder this[int id] => reminders.First(r => r.ID == id);
 
         public async Task Load()
         {
@@ -28,17 +31,17 @@ namespace Poker.Forms
         public async Task Add(Reminder reminder)
         {
             reminders.Add(reminder);
-            //await Save();
-            await Task.CompletedTask;
+            await Save();
         }
 
-        private async Task Save()
+        public async Task Save()
         {
-            var saveData = JsonConvert.SerializeObject(reminders);
+            await Task.CompletedTask;
+            //var saveData = JsonConvert.SerializeObject(reminders);
 
-            IFolder root = FileSystem.Current.LocalStorage;
-            var remindersFile = await root.GetFileAsync(SaveFile);
-            await remindersFile.WriteAllTextAsync(saveData);
+            //IFolder root = FileSystem.Current.LocalStorage;
+            //var remindersFile = await root.GetFileAsync(SaveFile);
+            //await remindersFile.WriteAllTextAsync(saveData);
         }
     }
 }

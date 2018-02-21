@@ -1,6 +1,5 @@
 ﻿using Poker.Forms.Models;
 using Poker.Forms.Views.Pages;
-using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -25,13 +24,19 @@ namespace Poker.Forms.ViewModels
 
         private void OnAddReminderClick()
         {
-            var reminderPage = new ReminderPage(reminderManager);
-            Application.Current.MainPage = reminderPage;
+            LoadReminderPage();
         }
 
         private void OnReminderTap(int id)
         {
-            Console.WriteLine(id);
+            var reminder = reminderManager[id];
+            LoadReminderPage(reminder);
+        }
+
+        private void LoadReminderPage(Reminder reminder = null)
+        {
+            var reminderPage = new ReminderPage(reminderManager, reminder);
+            Application.Current.MainPage = reminderPage;
         }
     }
 }

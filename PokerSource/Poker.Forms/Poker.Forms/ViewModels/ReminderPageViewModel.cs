@@ -11,6 +11,7 @@ namespace Poker.Forms.ViewModels
     {
         private readonly ReminderManager reminderManager;
         private readonly Reminder reminder;
+        private readonly bool isNewReminder;
 
         public ICommand SaveCommand { get; set; }
         public string Name
@@ -28,6 +29,7 @@ namespace Poker.Forms.ViewModels
 
         public ReminderPageViewModel(ReminderManager reminderManager, Reminder reminder)
         {
+            isNewReminder = reminder == null;
             this.reminderManager = reminderManager;
             this.reminder = reminder ?? new Reminder();
 
@@ -36,7 +38,12 @@ namespace Poker.Forms.ViewModels
 
         private void OnSave()
         {
-            reminderManager.Add(reminder).Wait();
+            if (isNewReminder)
+            {
+                reminderManager.Add(reminder).Wait(); 
+            }
+
+            reminderManager.Save().Wait();
 
             Application.Current.MainPage = new MainPage(reminderManager);
         }
