@@ -3,15 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Poker.Forms"
              x:Class="Poker.Forms.MainPage">
-    <Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
     <StackLayout>
         <Button Command="{Binding AddReminderCommand}" Text="Add Reminder" WidthRequest="200" HeightRequest="50"/>
         <ListView x:Name="RemindersList" ItemsSource="{Binding Reminders}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" />
+                    <ViewCell x:Name="Item">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Name}"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer BindingContext="{Binding Source={x:Reference RemindersList}, Path=BindingContext}" Command="{Binding SelectReminder}" CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext.ID}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Label Text="{Binding ID}"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

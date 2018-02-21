@@ -26,12 +26,12 @@ namespace Poker.Forms.ViewModels
             }
         }
 
-        public ReminderPageViewModel(ReminderManager reminderManager)
+        public ReminderPageViewModel(ReminderManager reminderManager, Reminder reminder)
         {
             this.reminderManager = reminderManager;
-            SaveCommand = new Command(OnSave);
+            this.reminder = reminder ?? new Reminder();
 
-            reminder = new Reminder();
+            SaveCommand = new Command(OnSave);
         }
 
         private void OnSave()
