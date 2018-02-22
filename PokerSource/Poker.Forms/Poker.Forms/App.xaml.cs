@@ -17,7 +17,6 @@ namespace Poker.Forms
 
             Reminders = new ReminderManager();
 
-            MainPage = new MainPage(Reminders);
         }
 
         protected override void OnStart()
@@ -25,6 +24,9 @@ namespace Poker.Forms
 #if !DEBUG
             AppCenter.Start("android=7dfc628b-a3ef-4e07-92c3-7abe7a646971;", typeof(Analytics), typeof(Crashes)); 
 #endif
+
+            Reminders.Load();
+            MainPage = new MainPage(Reminders);
         }
 
         protected override void OnSleep()

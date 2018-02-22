@@ -1,8 +1,12 @@
 ﻿using Newtonsoft.Json;
-using PCLStorage;
+using Plugin.NetStandardStorage.Abstractions.Interfaces;
+using Plugin.NetStandardStorage.Abstractions.Types;
+using Plugin.NetStandardStorage.Implementations;
 using Poker.Forms.Models;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Poker.Forms
@@ -11,37 +15,51 @@ namespace Poker.Forms
     {
         private const string SaveFile = "Reminders.json";
 
+        private readonly FileSystem fileSystem;
         private readonly List<Reminder> reminders = new List<Reminder>();
+
+        public ReminderManager()
+        {
+            this.fileSystem = new FileSystem();
+        }
 
         public IReadOnlyCollection<Reminder> Reminders => reminders;
 
         public Reminder this[int id] => reminders.First(r => r.ID == id);
 
-        public async Task Load()
+        public void Load()
         {
-            IFolder root = FileSystem.Current.LocalStorage;
-            var remindersFile = await root.CreateFileAsync(SaveFile, CreationCollisionOption.OpenIfExists);
+            IFolder root = fileSystem.LocalStorage;
+            var remindersFile = root.CreateFile(SaveFile, CreationCollisionOption.OpenIfExists);
 
-            var text = await remindersFile.ReadAllTextAsync();
+            byte[] buffer;
+            using(var stream = remindersFile.Open(FileAccess.Read))
+            {
+                buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, buffer.Length);
+            }
 
+            var text = Encoding.Default.GetString(buffer);
             List<Reminder> savedReminders = JsonConvert.DeserializeObject<List<Reminder>>(text);
-            reminders.AddRange(savedReminders);
+            if (savedReminders != null)
+            {
+                reminders.AddRange(savedReminders); 
+            }
         }
 
-        public async Task Add(Reminder reminder)
+        public void Add(Reminder reminder)
         {
             reminders.Add(reminder);
-            await Save();
+            Save();
         }
 
-        public async Task Save()
+        public void Save()
         {
-            await Task.CompletedTask;
-            //var saveData = JsonConvert.SerializeObject(reminders);
+            var saveData = JsonConvert.SerializeObject(reminders);
 
-            //IFolder root = FileSystem.Current.LocalStorage;
-            //var remindersFile = await root.GetFileAsync(SaveFile);
-            //await remindersFile.WriteAllTextAsync(saveData);
+            IFolder root = fileSystem.LocalStorage;
+            var remindersFile = root.GetFile(SaveFile);
+            remindersFile.WriteAllText(saveData);
         }
     }
 }

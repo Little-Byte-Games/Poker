@@ -40,10 +40,10 @@ namespace Poker.Forms.ViewModels
         {
             if (isNewReminder)
             {
-                reminderManager.Add(reminder).Wait(); 
+                reminderManager.Add(reminder);
             }
 
-            reminderManager.Save().Wait();
+            reminderManager.Save();
 
             Application.Current.MainPage = new MainPage(reminderManager);
         }
