@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Poker.Forms
 {
@@ -20,7 +19,7 @@ namespace Poker.Forms
 
         public ReminderManager()
         {
-            this.fileSystem = new FileSystem();
+            fileSystem = new FileSystem();
         }
 
         public IReadOnlyCollection<Reminder> Reminders => reminders;
@@ -41,9 +40,9 @@ namespace Poker.Forms
 
             var text = Encoding.Default.GetString(buffer);
             List<Reminder> savedReminders = JsonConvert.DeserializeObject<List<Reminder>>(text);
-            if (savedReminders != null)
+            if(savedReminders != null)
             {
-                reminders.AddRange(savedReminders); 
+                reminders.AddRange(savedReminders);
             }
         }
 
