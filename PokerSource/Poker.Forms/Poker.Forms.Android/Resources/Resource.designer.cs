@@ -26,8 +26,8 @@ namespace Poker.Forms.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::PCLStorage.Resource.String.ApplicationName = global::Poker.Forms.Droid.Resource.String.ApplicationName;
-			global::PCLStorage.Resource.String.Hello = global::Poker.Forms.Droid.Resource.String.Hello;
+			global::Plugin.NetStandardStorage.Resource.String.ApplicationName = global::Poker.Forms.Droid.Resource.String.ApplicationName;
+			global::Plugin.NetStandardStorage.Resource.String.Hello = global::Poker.Forms.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Poker.Forms.Droid.Resource.Attribute.actionBarSize;
 		}
 		
