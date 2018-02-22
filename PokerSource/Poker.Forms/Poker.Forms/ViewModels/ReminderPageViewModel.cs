@@ -13,6 +13,7 @@ namespace Poker.Forms.ViewModels
         private readonly Reminder reminder;
         private readonly bool isNewReminder;
 
+        public ICommand CancelCommand { get; set; }
         public ICommand SaveCommand { get; set; }
         public string Name
         {
@@ -29,11 +30,22 @@ namespace Poker.Forms.ViewModels
 
         public ReminderPageViewModel(ReminderManager reminderManager, Reminder reminder)
         {
-            isNewReminder = reminder == null;
             this.reminderManager = reminderManager;
-            this.reminder = reminder ?? new Reminder();
 
+            isNewReminder = reminder == null;
+            this.reminder = new Reminder();
+            if(reminder != null)
+            {
+                reminder.CopyTo(this.reminder);
+            }
+
+            CancelCommand = new Command(OnCancel);
             SaveCommand = new Command(OnSave);
+        }
+
+        private void OnCancel()
+        {
+            LoadMainPage();
         }
 
         private void OnSave()
@@ -42,9 +54,18 @@ namespace Poker.Forms.ViewModels
             {
                 reminderManager.Add(reminder);
             }
+            else
+            {
+                var oldReminder = reminderManager[reminder.ID];
+                reminder.CopyTo(oldReminder);
+            }
 
             reminderManager.Save();
+            LoadMainPage();
+        }
 
+        private void LoadMainPage()
+        {
             Application.Current.MainPage = new MainPage(reminderManager);
         }
 

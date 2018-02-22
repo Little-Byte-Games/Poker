@@ -4,7 +4,10 @@
              x:Class="Poker.Forms.Views.Pages.ReminderPage">
     <ContentPage.Content>
         <StackLayout>
-            <Button Command="{Binding SaveCommand}" Text="Save" HeightRequest="50"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Command="{Binding CancelCommand}" Text="Cancel" HeightRequest="50"/>
+                <Button Command="{Binding SaveCommand}" Text="Save" HeightRequest="50"/>
+            </StackLayout>
             <Entry Placeholder="Reminder Name" Text="{Binding Name, Mode=TwoWay}"/>
         </StackLayout>
     </ContentPage.Content>

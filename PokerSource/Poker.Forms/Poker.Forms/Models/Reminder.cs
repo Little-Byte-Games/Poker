@@ -11,5 +11,11 @@ namespace Poker.Forms.Models
         {
             ID = Guid.NewGuid().GetHashCode();
         }
+
+        public void CopyTo(Reminder otherReminder)
+        {
+            otherReminder.ID = ID;
+            otherReminder.Name = Name;
+        }
     }
 }
