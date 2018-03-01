@@ -60,6 +60,31 @@ namespace Poker.Forms.ViewModels
             }
         }
 
+        public TimeSpan StartTime
+        {
+            get => reminder.StartTime;
+            set
+            {
+                if(reminder.StartTime != value)
+                {
+                    reminder.StartTime = value;
+                    OnPropertyChanged(nameof(StartTime));
+                }
+            }
+        }
+        public TimeSpan EndTime
+        {
+            get => reminder.EndTime;
+            set
+            {
+                if(reminder.EndTime != value)
+                {
+                    reminder.EndTime = value;
+                    OnPropertyChanged(nameof(EndTime));
+                }
+            }
+        }
+
         public ICommand CancelCommand { get; set; }
         public ICommand SaveCommand { get; set; }
         public string Name

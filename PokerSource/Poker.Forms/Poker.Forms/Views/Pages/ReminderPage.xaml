@@ -10,6 +10,14 @@
             </StackLayout>
             <Entry Placeholder="Reminder Name" Text="{Binding Name, Mode=TwoWay}"/>
             <StackLayout Orientation="Horizontal">
+                <Label>Start</Label>
+                <TimePicker Time="{Binding StartTime}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label>End</Label>
+                <TimePicker Time="{Binding EndTime}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
                 <Switch IsToggled="{Binding Monday, Mode=TwoWay}"/>
                 <Label>Monday</Label>
             </StackLayout>
