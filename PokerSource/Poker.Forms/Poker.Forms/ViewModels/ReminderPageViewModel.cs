@@ -1,5 +1,6 @@
 ﻿using Poker.Forms.Annotations;
 using Poker.Forms.Models;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -12,6 +13,52 @@ namespace Poker.Forms.ViewModels
         private readonly ReminderManager reminderManager;
         private readonly Reminder reminder;
         private readonly bool isNewReminder;
+
+        public bool Monday
+        {
+            get => reminder.Days.Contains(DayOfWeek.Monday);
+            set
+            {
+                ToggleDay(DayOfWeek.Monday, value);
+                OnPropertyChanged(nameof(Monday));
+            }
+        }
+        public bool Tuesday
+        {
+            get => reminder.Days.Contains(DayOfWeek.Tuesday);
+            set
+            {
+                ToggleDay(DayOfWeek.Tuesday, value);
+                OnPropertyChanged(nameof(Tuesday));
+            }
+        }
+        public bool Wednesday
+        {
+            get => reminder.Days.Contains(DayOfWeek.Wednesday);
+            set
+            {
+                ToggleDay(DayOfWeek.Wednesday, value);
+                OnPropertyChanged(nameof(Wednesday));
+            }
+        }
+        public bool Thursday
+        {
+            get => reminder.Days.Contains(DayOfWeek.Thursday);
+            set
+            {
+                ToggleDay(DayOfWeek.Thursday, value);
+                OnPropertyChanged(nameof(Thursday));
+            }
+        }
+        public bool Friday
+        {
+            get => reminder.Days.Contains(DayOfWeek.Friday);
+            set
+            {
+                ToggleDay(DayOfWeek.Friday, value);
+                OnPropertyChanged(nameof(Friday));
+            }
+        }
 
         public ICommand CancelCommand { get; set; }
         public ICommand SaveCommand { get; set; }
@@ -50,7 +97,7 @@ namespace Poker.Forms.ViewModels
 
         private void OnSave()
         {
-            if (isNewReminder)
+            if(isNewReminder)
             {
                 reminderManager.Add(reminder);
             }
@@ -67,6 +114,18 @@ namespace Poker.Forms.ViewModels
         private void LoadMainPage()
         {
             Application.Current.MainPage = new MainPage(reminderManager);
+        }
+
+        private void ToggleDay(DayOfWeek day, bool on)
+        {
+            if(on)
+            {
+                reminder.Days.Add(day);
+            }
+            else
+            {
+                reminder.Days.Remove(day);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

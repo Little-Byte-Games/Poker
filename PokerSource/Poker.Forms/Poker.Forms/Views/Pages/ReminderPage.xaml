@@ -9,6 +9,26 @@
                 <Button Command="{Binding SaveCommand}" Text="Save" HeightRequest="50"/>
             </StackLayout>
             <Entry Placeholder="Reminder Name" Text="{Binding Name, Mode=TwoWay}"/>
+            <StackLayout Orientation="Horizontal">
+                <Switch IsToggled="{Binding Monday, Mode=TwoWay}"/>
+                <Label>Monday</Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Switch IsToggled="{Binding Tuesday, Mode=TwoWay}"/>
+                <Label>Tuesday</Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Switch IsToggled="{Binding Wednesday, Mode=TwoWay}"/>
+                <Label>Wednesday</Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Switch IsToggled="{Binding Thursday, Mode=TwoWay}"/>
+                <Label>Thursday</Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Switch IsToggled="{Binding Friday, Mode=TwoWay}"/>
+                <Label>Friday</Label>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

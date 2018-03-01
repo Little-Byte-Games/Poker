@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Poker.Forms.Models
 {
@@ -6,6 +7,7 @@ namespace Poker.Forms.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public HashSet<DayOfWeek> Days { get; set; } = new HashSet<DayOfWeek>();
 
         public Reminder()
         {
@@ -19,7 +21,7 @@ namespace Poker.Forms.Models
             { 
                 var value = property.GetValue(this); 
                 property.SetValue(otherReminder, value); 
-            }
+            } 
         }
     }
 }
