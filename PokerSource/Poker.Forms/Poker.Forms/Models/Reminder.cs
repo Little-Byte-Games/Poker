@@ -14,8 +14,12 @@ namespace Poker.Forms.Models
 
         public void CopyTo(Reminder otherReminder)
         {
-            otherReminder.ID = ID;
-            otherReminder.Name = Name;
+            var properties = GetType().GetProperties(); 
+            foreach(var property in properties) 
+            { 
+                var value = property.GetValue(this); 
+                property.SetValue(otherReminder, value); 
+            }
         }
     }
 }
