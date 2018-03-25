@@ -9,11 +9,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell x:Name="Item">
-                        <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal" BackgroundColor="Aqua">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer BindingContext="{Binding Source={x:Reference RemindersList}, Path=BindingContext}" Command="{Binding SelectReminder}" CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext.ID}" />
+                            </StackLayout.GestureRecognizers>
                             <Label Text="{Binding Name}"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer BindingContext="{Binding Source={x:Reference RemindersList}, Path=BindingContext}" Command="{Binding SelectReminder}" CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext.ID}" />
-                                </Label.GestureRecognizers>
                             </Label>
                             <Label Text="{Binding ID}"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
                         </StackLayout>
