@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Poker.Forms.Views.ReminderSummaryView">
+    <ContentView.Content>
+        <StackLayout BackgroundColor="{Binding MainColor}">
+            <Switch />
+            <StackLayout>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SelectReminder}" />
+                </StackLayout.GestureRecognizers>
+                <Label Text="{Binding Name}" />
+                <ProgressBar Progress="0.5"></ProgressBar>
+                <Label>2/4</Label>
+            </StackLayout>
+            <Button Image="icon.png" WidthRequest="50"></Button>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

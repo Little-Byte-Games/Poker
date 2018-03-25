@@ -12,14 +12,12 @@ namespace Poker.Forms.ViewModels
 
         public IReadOnlyCollection<Reminder> Reminders => reminderManager.Reminders;
         public ICommand AddReminderCommand { get; set; }
-        public Command<int> SelectReminder { get; set; }
 
         public MainPageViewModel(ReminderManager reminderManager)
         {
             this.reminderManager = reminderManager;
 
             AddReminderCommand = new Command(OnAddReminderClick);
-            SelectReminder = new Command<int>(OnReminderTap);
         }
 
         private void OnAddReminderClick()
@@ -27,13 +25,7 @@ namespace Poker.Forms.ViewModels
             LoadReminderPage();
         }
 
-        private void OnReminderTap(int id)
-        {
-            var reminder = reminderManager[id];
-            LoadReminderPage(reminder);
-        }
-
-        private void LoadReminderPage(Reminder reminder = null)
+        public void LoadReminderPage(Reminder reminder = null)
         {
             var reminderPage = new ReminderPage(reminderManager, reminder);
             Application.Current.MainPage = reminderPage;

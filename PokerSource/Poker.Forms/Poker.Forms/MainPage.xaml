@@ -1,25 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Poker.Forms"
              x:Class="Poker.Forms.MainPage">
     <StackLayout>
-        <Button Command="{Binding AddReminderCommand}" Text="Add Reminder" WidthRequest="200" HeightRequest="50"/>
-        <ListView x:Name="RemindersList" ItemsSource="{Binding Reminders}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell x:Name="Item">
-                        <StackLayout Orientation="Horizontal" BackgroundColor="Aqua">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer BindingContext="{Binding Source={x:Reference RemindersList}, Path=BindingContext}" Command="{Binding SelectReminder}" CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext.ID}" />
-                            </StackLayout.GestureRecognizers>
-                            <Label Text="{Binding Name}"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                            </Label>
-                            <Label Text="{Binding ID}"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Button Command="{Binding AddReminderCommand}" Text="Add Reminder" WidthRequest="200" HeightRequest="50" />
+        <ScrollView>
+            <StackLayout x:Name="ReminderList"></StackLayout>
+        </ScrollView>
     </StackLayout>
 </ContentPage>
+
