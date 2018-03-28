@@ -11,10 +11,10 @@
                     <TapGestureRecognizer Command="{Binding SelectReminder}" />
                 </StackLayout.GestureRecognizers>
                 <Label Text="{Binding Name}" />
-                <ProgressBar Progress="0.5"></ProgressBar>
-                <Label>2/4</Label>
+                <ProgressBar Progress="{Binding Progress}" />
+                <Label Text="{Binding AlarmCounts}" />
             </StackLayout>
-            <Button Image="icon.png" WidthRequest="50"></Button>
+            <Button Image="icon.png" WidthRequest="50" />
         </StackLayout>
     </ContentView.Content>
 </ContentView>

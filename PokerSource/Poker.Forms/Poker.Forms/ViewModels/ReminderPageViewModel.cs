@@ -110,6 +110,11 @@ namespace Poker.Forms.ViewModels
             {
                 reminder.CopyTo(this.reminder);
             }
+            else
+            {
+                var random = new Random();
+                this.reminder.MaxAlarmCount = (uint)random.Next(1, 10);
+            }
 
             CancelCommand = new Command(OnCancel);
             SaveCommand = new Command(OnSave);

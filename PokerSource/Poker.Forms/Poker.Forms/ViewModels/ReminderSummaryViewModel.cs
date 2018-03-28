@@ -12,6 +12,8 @@ namespace Poker.Forms.ViewModels
 
         public string Name => reminder.Name;
         public Color MainColor { get; }
+        public string AlarmCounts => $"{reminder.CurrentAlarmCount}/{reminder.MaxAlarmCount}";
+        public double Progress => (double)reminder.CurrentAlarmCount / reminder.MaxAlarmCount;
         public Command SelectReminder { get; }
 
         public ReminderSummaryViewModel(Reminder reminder)
@@ -25,6 +27,8 @@ namespace Poker.Forms.ViewModels
 
         private void OnSelectReminder()
         {
+            // TODO: Remove temp alarm progress.
+            ++reminder.CurrentAlarmCount;
             SelectEvent?.Invoke(reminder);
         }
     }
