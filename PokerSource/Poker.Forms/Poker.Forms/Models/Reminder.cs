@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Xamarin.Forms;
 
 namespace Poker.Forms.Models
 {
@@ -14,20 +13,20 @@ namespace Poker.Forms.Models
         public HashSet<DayOfWeek> Days { get; set; } = new HashSet<DayOfWeek>();
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
-        public Color Color { get; set; }
+        public int Color { get; set; }
+        public bool IsDisabled { get; set; }
 
         public uint MaxAlarmCount
         {
             get => maxAlarmCount;
             set => maxAlarmCount = value > 0 ? value : 1;
         }
-        
+
         public uint CurrentAlarmCount
         {
             get => currentAlarmCount;
             set => currentAlarmCount = value > maxAlarmCount ? maxAlarmCount : value;
         }
-
 
         public Reminder()
         {

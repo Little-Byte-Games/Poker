@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Poker.Forms.Global;
 using Xamarin.Forms;
 
 namespace Poker.Forms.ViewModels
@@ -114,7 +115,7 @@ namespace Poker.Forms.ViewModels
             {
                 var random = new Random();
                 this.reminder.MaxAlarmCount = (uint)random.Next(1, 10);
-                this.reminder.Color = new Color(random.NextDouble(), random.NextDouble(), random.NextDouble());
+                this.reminder.Color = random.Next(Colors.ThemeColors.Length);
             }
 
             CancelCommand = new Command(OnCancel);

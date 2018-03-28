@@ -19,6 +19,7 @@ namespace Poker.Forms
                 var summaryViewModel = new ReminderSummaryViewModel(reminder);
                 var summaryView = new ReminderSummaryView(summaryViewModel);
                 summaryViewModel.SelectEvent += viewModel.LoadReminderPage;
+                summaryViewModel.EnabledEvent += reminderManager.Save;
                 ReminderList.Children.Add(summaryView);
             }
         }

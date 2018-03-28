@@ -5,7 +5,7 @@
              x:Class="Poker.Forms.Views.ReminderSummaryView">
     <ContentView.Content>
         <StackLayout BackgroundColor="{Binding MainColor}">
-            <Switch />
+            <Switch IsToggled="{Binding IsEnabled}" />
             <StackLayout>
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding SelectReminder}" />
