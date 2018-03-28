@@ -1,5 +1,5 @@
-﻿using System;
-using Poker.Forms.Models;
+﻿using Poker.Forms.Models;
+using System;
 using Xamarin.Forms;
 
 namespace Poker.Forms.ViewModels
@@ -11,7 +11,7 @@ namespace Poker.Forms.ViewModels
         private readonly Reminder reminder;
 
         public string Name => reminder.Name;
-        public Color MainColor { get; }
+        public Color MainColor => reminder.Color;
         public string AlarmCounts => $"{reminder.CurrentAlarmCount}/{reminder.MaxAlarmCount}";
         public double Progress => (double)reminder.CurrentAlarmCount / reminder.MaxAlarmCount;
         public Command SelectReminder { get; }
@@ -19,8 +19,6 @@ namespace Poker.Forms.ViewModels
         public ReminderSummaryViewModel(Reminder reminder)
         {
             this.reminder = reminder;
-            var random = new Random();
-            MainColor = new Color(random.NextDouble(), random.NextDouble(), random.NextDouble());
 
             SelectReminder = new Command(OnSelectReminder);
         }

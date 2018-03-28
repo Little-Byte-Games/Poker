@@ -114,6 +114,7 @@ namespace Poker.Forms.ViewModels
             {
                 var random = new Random();
                 this.reminder.MaxAlarmCount = (uint)random.Next(1, 10);
+                this.reminder.Color = new Color(random.NextDouble(), random.NextDouble(), random.NextDouble());
             }
 
             CancelCommand = new Command(OnCancel);
