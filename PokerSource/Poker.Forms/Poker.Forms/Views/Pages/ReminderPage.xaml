@@ -9,13 +9,22 @@
                 <Button Command="{Binding SaveCommand}" Text="Save" HeightRequest="50"/>
             </StackLayout>
             <Entry Placeholder="Reminder Name" Text="{Binding Name, Mode=TwoWay}"/>
-            <StackLayout Orientation="Horizontal">
-                <Label>Start</Label>
-                <TimePicker Time="{Binding StartTime}"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label>End</Label>
-                <TimePicker Time="{Binding EndTime}"/>
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Label>Repeats</Label>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout BackgroundColor="LightGray">
+                        <Entry Text="{Binding RepeatCount, Mode=OneWay}" TextChanged="OnRepeatCountChanged" Keyboard="Numeric"></Entry>
+                        <Label TextColor="Black">times</Label>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="LightGray">
+                        <Label TextColor="Black">starting</Label> 
+                        <TimePicker Time="{Binding StartTime}"/>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="LightGray">
+                        <Label TextColor="Black">ending</Label> 
+                        <TimePicker Time="{Binding StartTime}"/>
+                    </StackLayout>
+                </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Switch IsToggled="{Binding Monday, Mode=TwoWay}"/>

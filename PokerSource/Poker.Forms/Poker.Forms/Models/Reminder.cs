@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Poker.Forms.Models
 {
@@ -37,7 +38,7 @@ namespace Poker.Forms.Models
 
         public void CopyTo(Reminder otherReminder)
         {
-            var properties = GetType().GetProperties();
+            var properties = GetType().GetProperties().Where(p => p.SetMethod != null);
             foreach(var property in properties)
             {
                 var value = property.GetValue(this);

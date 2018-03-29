@@ -11,6 +11,8 @@ namespace Poker.Forms.ViewModels
 {
     public class ReminderPageViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private readonly ReminderManager reminderManager;
         private readonly Reminder reminder;
         private readonly bool isNewReminder;
@@ -59,6 +61,12 @@ namespace Poker.Forms.ViewModels
                 ToggleDay(DayOfWeek.Friday, value);
                 OnPropertyChanged(nameof(Friday));
             }
+        }
+
+        public uint RepeatCount
+        {
+            get => reminder.MaxAlarmCount;
+            set => reminder.MaxAlarmCount = value;
         }
 
         public TimeSpan StartTime
@@ -160,12 +168,18 @@ namespace Poker.Forms.ViewModels
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void OnRepeatCountChanged(string newValue)
+        {
+            if(uint.TryParse(newValue, out var repeatCount))
+            {
+                RepeatCount = repeatCount;
+            }
         }
     }
 }
