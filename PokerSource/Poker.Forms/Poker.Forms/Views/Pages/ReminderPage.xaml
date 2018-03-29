@@ -27,6 +27,11 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
+                <Label>With minimum</Label>
+                <Entry Text="{Binding MinimumTime}" TextChanged="OnMinimumTimeBetweenChanged" Keyboard="Numeric"></Entry>
+                <Label>minutes between</Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
                 <Switch IsToggled="{Binding Monday, Mode=TwoWay}"/>
                 <Label>Monday</Label>
             </StackLayout>

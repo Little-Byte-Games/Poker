@@ -29,6 +29,8 @@ namespace Poker.Forms.Models
             set => currentAlarmCount = value > maxAlarmCount ? maxAlarmCount : value;
         }
 
+        public int MinimumMinutesBetween { get; set; }
+
         public bool IsAvailable => Days.Contains(DateTime.Today.DayOfWeek);
 
         public Reminder()

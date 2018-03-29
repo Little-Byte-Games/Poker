@@ -22,5 +22,10 @@ namespace Poker.Forms.Views.Pages
         {
             viewModel.OnRepeatCountChanged(args.NewTextValue);
         }
+
+        private void OnMinimumTimeBetweenChanged(object sender, TextChangedEventArgs args)
+        {
+            viewModel.OnMinimumTimeBetweenChanged(args.NewTextValue);
+        }
     }
 }

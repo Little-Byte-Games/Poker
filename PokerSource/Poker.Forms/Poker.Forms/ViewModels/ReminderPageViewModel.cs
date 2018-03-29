@@ -1,10 +1,10 @@
 ﻿using Poker.Forms.Annotations;
+using Poker.Forms.Global;
 using Poker.Forms.Models;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using Poker.Forms.Global;
 using Xamarin.Forms;
 
 namespace Poker.Forms.ViewModels
@@ -17,97 +17,56 @@ namespace Poker.Forms.ViewModels
         private readonly Reminder reminder;
         private readonly bool isNewReminder;
 
-        public bool Monday
-        {
-            get => reminder.Days.Contains(DayOfWeek.Monday);
-            set
-            {
-                ToggleDay(DayOfWeek.Monday, value);
-                OnPropertyChanged(nameof(Monday));
-            }
+        public string Name => reminder.Name;
+        public TimeSpan StartTime 
+        { 
+            get => reminder.StartTime; 
+            set => reminder.StartTime = value; 
         }
-        public bool Tuesday
+        public TimeSpan EndTime
         {
-            get => reminder.Days.Contains(DayOfWeek.Tuesday);
-            set
-            {
-                ToggleDay(DayOfWeek.Tuesday, value);
-                OnPropertyChanged(nameof(Tuesday));
-            }
+            get => reminder.EndTime;
+            set => reminder.EndTime = value;
         }
-        public bool Wednesday
-        {
-            get => reminder.Days.Contains(DayOfWeek.Wednesday);
-            set
-            {
-                ToggleDay(DayOfWeek.Wednesday, value);
-                OnPropertyChanged(nameof(Wednesday));
-            }
-        }
-        public bool Thursday
-        {
-            get => reminder.Days.Contains(DayOfWeek.Thursday);
-            set
-            {
-                ToggleDay(DayOfWeek.Thursday, value);
-                OnPropertyChanged(nameof(Thursday));
-            }
-        }
-        public bool Friday
-        {
-            get => reminder.Days.Contains(DayOfWeek.Friday);
-            set
-            {
-                ToggleDay(DayOfWeek.Friday, value);
-                OnPropertyChanged(nameof(Friday));
-            }
-        }
-
         public uint RepeatCount
         {
             get => reminder.MaxAlarmCount;
             set => reminder.MaxAlarmCount = value;
         }
-
-        public TimeSpan StartTime
+        public int MinimumTime
         {
-            get => reminder.StartTime;
-            set
-            {
-                if(reminder.StartTime != value)
-                {
-                    reminder.StartTime = value;
-                    OnPropertyChanged(nameof(StartTime));
-                }
-            }
+            get => reminder.MinimumMinutesBetween;
+            set => reminder.MinimumMinutesBetween = value;
         }
-        public TimeSpan EndTime
+
+        public bool Monday
         {
-            get => reminder.EndTime;
-            set
-            {
-                if(reminder.EndTime != value)
-                {
-                    reminder.EndTime = value;
-                    OnPropertyChanged(nameof(EndTime));
-                }
-            }
+            get => reminder.Days.Contains(DayOfWeek.Monday);
+            set => ToggleDay(DayOfWeek.Monday, value);
+        }
+        public bool Tuesday
+        {
+            get => reminder.Days.Contains(DayOfWeek.Tuesday);
+            set => ToggleDay(DayOfWeek.Tuesday, value);
+        }
+        public bool Wednesday
+        {
+            get => reminder.Days.Contains(DayOfWeek.Wednesday);
+            set => ToggleDay(DayOfWeek.Wednesday, value);
+        }
+        public bool Thursday
+        {
+            get => reminder.Days.Contains(DayOfWeek.Thursday);
+            set => ToggleDay(DayOfWeek.Thursday, value);
+        }
+        public bool Friday
+        {
+            get => reminder.Days.Contains(DayOfWeek.Friday);
+            set => ToggleDay(DayOfWeek.Friday, value);
         }
 
         public ICommand CancelCommand { get; set; }
         public ICommand SaveCommand { get; set; }
-        public string Name
-        {
-            get => reminder.Name;
-            set
-            {
-                if(value != reminder.Name)
-                {
-                    reminder.Name = value;
-                    OnPropertyChanged(nameof(Name));
-                }
-            }
-        }
 
         public ReminderPageViewModel(ReminderManager reminderManager, Reminder reminder)
         {
@@ -179,6 +138,14 @@ namespace Poker.Forms.ViewModels
             if(uint.TryParse(newValue, out var repeatCount))
             {
                 RepeatCount = repeatCount;
+            }
+        }
+
+        public void OnMinimumTimeBetweenChanged(string newValue)
+        {
+            if(int.TryParse(newValue, out var minimumTime))
+            {
+                MinimumTime = minimumTime;
             }
         }
     }
