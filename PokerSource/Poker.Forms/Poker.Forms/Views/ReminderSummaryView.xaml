@@ -4,17 +4,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Poker.Forms.Views.ReminderSummaryView">
     <ContentView.Content>
-        <StackLayout BackgroundColor="{Binding MainColor}">
-            <Switch IsToggled="{Binding IsEnabled}" />
+        <Frame BackgroundColor="{Binding MainColor}" OutlineColor="{Binding BorderColor}">
             <StackLayout>
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding SelectReminder}" />
-                </StackLayout.GestureRecognizers>
-                <Label Text="{Binding Name}" />
-                <ProgressBar Progress="{Binding Progress}" />
-                <Label Text="{Binding AlarmCounts}" />
+                <Switch IsToggled="{Binding IsEnabled}" />
+                <StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectReminder}" />
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="{Binding Name}" />
+                    <ProgressBar Progress="{Binding Progress}" />
+                    <Label Text="{Binding AlarmCounts}" />
+                </StackLayout>
+                <Button Image="icon.png" WidthRequest="50" />
             </StackLayout>
-            <Button Image="icon.png" WidthRequest="50" />
-        </StackLayout>
+        </Frame>
     </ContentView.Content>
 </ContentView>

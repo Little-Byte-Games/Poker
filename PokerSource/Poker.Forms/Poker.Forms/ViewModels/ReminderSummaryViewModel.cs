@@ -17,7 +17,8 @@ namespace Poker.Forms.ViewModels
         private readonly Reminder reminder;
 
         public string Name => reminder.Name;
-        public Color MainColor => reminder.IsDisabled ? Color.Gray : Colors.ThemeColors[reminder.Color];
+        public Color MainColor => reminder.IsDisabled ? Color.Gray : !reminder.IsAvailable ? Color.Transparent : Colors.ThemeColors[reminder.Color];
+        public Color BorderColor => reminder.IsAvailable ? Color.Transparent : Color.Black;
         public string AlarmCounts => $"{reminder.CurrentAlarmCount}/{reminder.MaxAlarmCount}";
         public double Progress => (double)reminder.CurrentAlarmCount / reminder.MaxAlarmCount;
         public Command SelectReminder { get; }
