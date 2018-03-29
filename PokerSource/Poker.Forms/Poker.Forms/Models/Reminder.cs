@@ -28,6 +28,8 @@ namespace Poker.Forms.Models
             set => currentAlarmCount = value > maxAlarmCount ? maxAlarmCount : value;
         }
 
+        public bool IsAvailable => Days.Contains(DateTime.Today.DayOfWeek);
+
         public Reminder()
         {
             ID = Guid.NewGuid().GetHashCode();
