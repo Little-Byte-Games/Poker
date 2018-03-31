@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
              x:Class="Poker.Forms.Views.Pages.ReminderPage">
     <ContentPage.Content>
         <StackLayout>
@@ -26,10 +27,11 @@
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label>With minimum</Label>
-                <Entry Text="{Binding MinimumTime}" TextChanged="OnMinimumTimeBetweenChanged" Keyboard="Numeric"></Entry>
-                <Label>minutes between</Label>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label VerticalTextAlignment="Center">With minimum</Label>
+                <Entry Text="{Binding MinimumTime}" TextChanged="OnMinimumTimeBetweenChanged" Keyboard="Numeric" WidthRequest="40"></Entry>
+                <Picker ItemsSource="{Binding TimeTypes}" SelectedItem="{Binding TimeType}" WidthRequest="50"></Picker>
+                <Label VerticalTextAlignment="Center">between</Label>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Switch IsToggled="{Binding Monday, Mode=TwoWay}"/>

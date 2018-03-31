@@ -2,6 +2,7 @@
 using Poker.Forms.Global;
 using Poker.Forms.Models;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -63,6 +64,13 @@ namespace Poker.Forms.ViewModels
         {
             get => reminder.Days.Contains(DayOfWeek.Friday);
             set => ToggleDay(DayOfWeek.Friday, value);
+        }
+
+        public IReadOnlyCollection<Reminder.Time> TimeTypes { get; } = new[] {Reminder.Time.Minute, Reminder.Time.Hour};
+        public Reminder.Time TimeType
+        {
+            get => reminder.TimeBetween;
+            set => reminder.TimeBetween = value;
         }
 
         public ICommand CancelCommand { get; set; }

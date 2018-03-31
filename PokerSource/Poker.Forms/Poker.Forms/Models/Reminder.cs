@@ -6,6 +6,12 @@ namespace Poker.Forms.Models
 {
     public class Reminder
     {
+        public enum Time
+        {
+            Minute,
+            Hour,
+        }
+
         private uint maxAlarmCount = 1;
         private uint currentAlarmCount;
 
@@ -30,6 +36,7 @@ namespace Poker.Forms.Models
         }
 
         public int MinimumMinutesBetween { get; set; }
+        public Time TimeBetween { get; set; } = Time.Hour;
 
         public bool IsAvailable => Days.Contains(DateTime.Today.DayOfWeek);
 
