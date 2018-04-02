@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Poker.Forms.Views.Pages.ReminderPage">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Orientation="Horizontal">
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
                 <Button Command="{Binding CancelCommand}" Text="Cancel" HeightRequest="50"/>
                 <Button Command="{Binding SaveCommand}" Text="Save" HeightRequest="50"/>
             </StackLayout>
@@ -99,6 +100,21 @@
                     </Picker.Items>
                 </Picker>
             </StackLayout>
-        </StackLayout>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label>Vibrate</Label>
+                    <Switch IsToggled="{Binding VibrateEnabled}" />
+                </StackLayout>
+                <Picker SelectedItem="{Binding SelectedVibrate}">
+                    <Picker.Items>
+                        <x:String>Vibrate 1</x:String>
+                        <x:String>Vibrate 2</x:String>
+                        <x:String>Vibrate 3</x:String>
+                        <x:String>Vibrate 4</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

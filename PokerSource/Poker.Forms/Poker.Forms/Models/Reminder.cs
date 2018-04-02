@@ -25,6 +25,8 @@ namespace Poker.Forms.Models
         public HashSet<int> SnoozeOptions { get; set; } = new HashSet<int>();
         public string Ringtone { get; set; }
         public bool IsRingtoneEnabled { get; set; }
+        public string Vibrate { get; set; }
+        public bool IsVibrateEnabled { get; set; }
 
         public uint MaxAlarmCount
         {

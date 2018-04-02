@@ -89,6 +89,17 @@ namespace Poker.Forms.ViewModels
             set => reminder.Ringtone = value;
         }
 
+        public bool VibrateEnabled
+        {
+            get => reminder.IsVibrateEnabled;
+            set => reminder.IsVibrateEnabled = value;
+        }
+        public string SelectedVibrate
+        {
+            get => reminder.Vibrate;
+            set => reminder.Vibrate = value;
+        }
+
         public ICommand CancelCommand { get; set; }
         public ICommand SaveCommand { get; set; }
         public Command<string> SnoozeToggle { get; set; }
