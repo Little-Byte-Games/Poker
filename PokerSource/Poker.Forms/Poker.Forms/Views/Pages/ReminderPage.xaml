@@ -33,6 +33,39 @@
                 <Picker ItemsSource="{Binding TimeTypes}" SelectedItem="{Binding TimeType}" WidthRequest="50"></Picker>
                 <Label VerticalTextAlignment="Center">between</Label>
             </StackLayout>
+            <StackLayout>
+                <Label>Snooze Options</Label>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <StackLayout BackgroundColor="{Binding Snooze5Color}">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SnoozeToggle}" CommandParameter="5" />
+                        </StackLayout.GestureRecognizers>
+                        <Label>5</Label>
+                        <Label>min</Label>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="{Binding Snooze15Color}">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SnoozeToggle}" CommandParameter="15" />
+                        </StackLayout.GestureRecognizers>
+                        <Label>15</Label>
+                        <Label>min</Label>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="{Binding Snooze30Color}">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SnoozeToggle}" CommandParameter="30" />
+                        </StackLayout.GestureRecognizers>
+                        <Label>30</Label>
+                        <Label>min</Label>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="{Binding Snooze60Color}">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SnoozeToggle}" CommandParameter="60" />
+                        </StackLayout.GestureRecognizers>
+                        <Label>60</Label>
+                        <Label>min</Label>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Switch IsToggled="{Binding Monday, Mode=TwoWay}"/>
                 <Label>Monday</Label>

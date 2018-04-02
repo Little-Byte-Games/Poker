@@ -73,8 +73,14 @@ namespace Poker.Forms.ViewModels
             set => reminder.TimeBetween = value;
         }
 
+        public Color Snooze5Color => reminder.SnoozeOptions.Contains(5) ? Color.DarkGray : Color.LightGray;
+        public Color Snooze15Color => reminder.SnoozeOptions.Contains(15) ? Color.DarkGray : Color.LightGray;
+        public Color Snooze30Color => reminder.SnoozeOptions.Contains(30) ? Color.DarkGray : Color.LightGray;
+        public Color Snooze60Color => reminder.SnoozeOptions.Contains(60) ? Color.DarkGray : Color.LightGray;
+
         public ICommand CancelCommand { get; set; }
         public ICommand SaveCommand { get; set; }
+        public Command<string> SnoozeToggle { get; set; }
 
         public ReminderPageViewModel(ReminderManager reminderManager, Reminder reminder)
         {
@@ -95,6 +101,7 @@ namespace Poker.Forms.ViewModels
 
             CancelCommand = new Command(OnCancel);
             SaveCommand = new Command(OnSave);
+            SnoozeToggle = new Command<string>(x => OnSnoozeToggle(int.Parse(x)));
         }
 
         private void OnCancel()
@@ -116,6 +123,23 @@ namespace Poker.Forms.ViewModels
 
             reminderManager.Save();
             LoadMainPage();
+        }
+
+        private void OnSnoozeToggle(int minutes)
+        {
+            if(reminder.SnoozeOptions.Contains(minutes))
+            {
+                reminder.SnoozeOptions.Remove(minutes);
+            }
+            else
+            {
+                reminder.SnoozeOptions.Add(minutes);
+            }
+
+            OnPropertyChanged(nameof(Snooze5Color));
+            OnPropertyChanged(nameof(Snooze15Color));
+            OnPropertyChanged(nameof(Snooze30Color));
+            OnPropertyChanged(nameof(Snooze60Color));
         }
 
         private void LoadMainPage()

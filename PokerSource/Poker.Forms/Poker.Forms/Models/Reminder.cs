@@ -22,6 +22,7 @@ namespace Poker.Forms.Models
         public TimeSpan EndTime { get; set; }
         public int Color { get; set; }
         public bool IsDisabled { get; set; }
+        public HashSet<int> SnoozeOptions { get; set; } = new HashSet<int>();
 
         public uint MaxAlarmCount
         {
