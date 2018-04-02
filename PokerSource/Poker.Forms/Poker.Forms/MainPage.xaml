@@ -6,7 +6,12 @@
     <StackLayout>
         <Button Command="{Binding AddReminderCommand}" Text="Add Reminder" WidthRequest="200" HeightRequest="50" />
         <ScrollView>
-            <StackLayout x:Name="ReminderList"></StackLayout>
+            <Grid x:Name="ReminderGrid" Margin="10, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
         </ScrollView>
     </StackLayout>
 </ContentPage>

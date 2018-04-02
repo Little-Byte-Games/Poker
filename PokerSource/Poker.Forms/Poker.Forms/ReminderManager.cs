@@ -22,7 +22,7 @@ namespace Poker.Forms
             fileSystem = new FileSystem();
         }
 
-        public IReadOnlyCollection<Reminder> Reminders => reminders;
+        public List<Reminder> Reminders => reminders;
 
         public Reminder this[int id] => reminders.First(r => r.ID == id);
 
