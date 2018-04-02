@@ -78,6 +78,17 @@ namespace Poker.Forms.ViewModels
         public Color Snooze30Color => reminder.SnoozeOptions.Contains(30) ? Color.DarkGray : Color.LightGray;
         public Color Snooze60Color => reminder.SnoozeOptions.Contains(60) ? Color.DarkGray : Color.LightGray;
 
+        public bool RingtoneEnabled
+        {
+            get => reminder.IsRingtoneEnabled;
+            set => reminder.IsRingtoneEnabled = value;
+        }
+        public string SelectedRingtone
+        {
+            get => reminder.Ringtone;
+            set => reminder.Ringtone = value;
+        }
+
         public ICommand CancelCommand { get; set; }
         public ICommand SaveCommand { get; set; }
         public Command<string> SnoozeToggle { get; set; }
