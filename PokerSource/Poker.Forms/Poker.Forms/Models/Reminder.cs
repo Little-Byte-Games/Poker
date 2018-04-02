@@ -23,6 +23,8 @@ namespace Poker.Forms.Models
         public int Color { get; set; }
         public bool IsDisabled { get; set; }
         public HashSet<int> SnoozeOptions { get; set; } = new HashSet<int>();
+        public string Ringtone { get; set; }
+        public bool IsRingtoneEnabled { get; set; }
 
         public uint MaxAlarmCount
         {
